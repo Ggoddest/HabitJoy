@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HabitJoy - Управляй своими привычками</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="api.js" defer></script>
+    <script src="modals.js" defer></script>
+    <script src="auth.js" defer></script>
+    <script src="habit.js" defer></script>
+    <script src="script.js" defer></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Шапка с меню -->
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2 cursor-pointer hover:opacity-80 transition-opacity">
+                <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white font-bold">HJ</div>
+                <h1 class="text-xl font-bold text-green-600">HabitJoy</h1>
+            </a>
+            
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="index.html" class="text-green-600 font-medium">Главная</a></li>
+                    <li><a href="habit-detail.html" class="text-gray-600 hover:text-green-600">Мои привычки</a></li>
+                    <li><a href="contacts.html" class="text-gray-600 hover:text-green-600">Контакты</a></li>
+                    <li><button id="loginBtn" class="text-gray-600 hover:text-green-600">Войти</button></li>
+                    <li><button id="registerBtn" class="bg-green-500 text-white px-4 py-1 rounded hover:bg-green-600">Регистрация</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Герой-секция -->
+    <section class="bg-gradient-to-r from-green-400 to-blue-500 text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-4">Управляй своими привычками. Улучшай свою жизнь.</h2>
+            <p class="text-xl mb-8">HabitJoy поможет вам отслеживать прогресс в формировании полезных привычек</p>
+            <button id="getStartedBtn" class="bg-white text-green-600 px-8 py-3 rounded-full font-bold text-lg hover:bg-gray-100">Начать сейчас</button>
+        </div>
+    </section>
+
+    <!-- Цитата дня -->
+    <section class="py-12 bg-green-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-2xl font-bold mb-6 text-green-800">Цитата дня</h2>
+                <div id="quoteContainer" class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+                        </svg>
+                    </div>
+                    <p id="quoteText" class="text-xl text-gray-700 italic mb-4">Загружаем вдохновляющую цитату...</p>
+                    <p id="quoteAuthor" class="text-lg text-green-600 font-semibold"></p>
+                    <button id="newQuoteBtn" class="mt-6 bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition duration-300">
+                        Новая цитата
+                    </button>
+                </div>
+                <!--<p class="text-sm text-gray-500 mt-4"><p class="text-sm text-gray-500 mt-4">Цитаты загружаются с использованием внешнего API и автоматически переводятся на русский язык</p></p>-->
+            </div>
+        </div>
+    </section>
+
+    <!-- О сайте -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Как работает HabitJoy?</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-green-600 text-2xl">+</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Создавайте привычки</h3>
+                    <p class="text-gray-600">Выберите из готовых шаблонов или создайте собственные привычки для отслеживания</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-blue-600 text-2xl">✓</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Отмечайте прогресс</h3>
+                    <p class="text-gray-600">Каждый день отмечайте, выполнили ли вы свою привычку, и следите за своим прогрессом</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow text-center">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-purple-600 text-2xl">📊</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Анализируйте статистику</h3>
+                    <p class="text-gray-600">Просматривайте подробную статистику за неделю, месяц или любой другой период</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Популярные привычки -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Популярные привычки</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white rounded-lg overflow-hidden shadow hover:shadow-md transition">
+                    <div class="h-40 bg-green-200 flex items-center justify-center">
+                        <span class="text-4xl">🏃</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-2">Утренняя зарядка</h3>
+                        <p class="text-gray-600 text-sm mb-4">15 минут физической активности каждый день</p>
+                        <button class="add-habit-btn w-full bg-green-500 text-white py-2 rounded hover:bg-green-600"
+                                data-name="Утренняя зарядка"
+                                data-description="15 минут физической активности каждый день"
+                                data-category="health">
+                            Добавить
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg overflow-hidden shadow hover:shadow-md transition">
+                    <div class="h-40 bg-blue-200 flex items-center justify-center">
+                        <span class="text-4xl">📚</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-2">Чтение</h3>
+                        <p class="text-gray-600 text-sm mb-4">20 минут чтения каждый день</p>
+                        <button class="add-habit-btn w-full bg-green-500 text-white py-2 rounded hover:bg-green-600"
+                                data-name="Чтение"
+                                data-description="20 минут чтения каждый день"
+                                data-category="learning">
+                            Добавить
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg overflow-hidden shadow hover:shadow-md transition">
+                    <div class="h-40 bg-yellow-200 flex items-center justify-center">
+                        <span class="text-4xl">💧</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-2">Пить воду</h3>
+                        <p class="text-gray-600 text-sm mb-4">2 литра воды в день</p>
+                        <button class="add-habit-btn w-full bg-green-500 text-white py-2 rounded hover:bg-green-600"
+                                data-name="Пить воду"
+                                data-description="2 литра воды в день"
+                                data-category="health">
+                            Добавить
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg overflow-hidden shadow hover:shadow-md transition">
+                    <div class="h-40 bg-purple-200 flex items-center justify-center">
+                        <span class="text-4xl">🧘</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-2">Медитация</h3>
+                        <p class="text-gray-600 text-sm mb-4">10 минут медитации каждый день</p>
+                        <button class="add-habit-btn w-full bg-green-500 text-white py-2 rounded hover:bg-green-600"
+                                data-name="Медитация"
+                                data-description="10 минут медитации каждый день"
+                                data-category="mindfulness">
+                            Добавить
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Графические элементы с абсолютным позиционированием -->
+    <div class="absolute top-40 left-10 w-20 h-20 bg-green-200 rounded-full opacity-30"></div>
+    <div class="absolute top-60 right-20 w-16 h-16 bg-blue-200 rounded-full opacity-40"></div>
+    <div class="absolute top-80 left-1/4 w-24 h-24 bg-yellow-200 rounded-full opacity-30"></div>
+    <div class="absolute top-96 right-1/3 w-12 h-12 bg-purple-200 rounded-full opacity-40"></div>
+    <div class="absolute top-1/3 left-2/3 w-28 h-28 bg-pink-200 rounded-full opacity-30"></div>
+    <div class="absolute top-2/3 right-10 w-18 h-18 bg-indigo-200 rounded-full opacity-40"></div>
+
+    <!-- Футер -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-sm">HJ</div>
+                        <h2 class="text-lg font-bold">HabitJoy</h2>
+                    </div>
+                    <p class="text-gray-400 mt-2">Управляй своими привычками. Улучшай свою жизнь.</p>
+                </div>
+                
+                <div class="text-center md:text-right">
+                    <p class="text-gray-400">&copy; 2025 HabitJoy. Все права защищены.</p>
+                    <p class="text-gray-400 mt-1">Сайт создан в рамках лабораторных работ по Internet технологиям</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

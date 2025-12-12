@@ -1,0 +1,314 @@
+/* Основные стили для HabitJoy */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+/* Кастомные стили для прогресс-баров */
+.progress-bar {
+    transition: width 0.5s ease-in-out;
+}
+
+/* Стили для календаря привычек */
+.habit-calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.calendar-day {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.calendar-day.completed {
+    background-color: #10b981;
+    color: white;
+}
+
+.calendar-day.missed {
+    background-color: #ef4444;
+    color: white;
+}
+
+.calendar-day.today {
+    border: 2px solid #10b981;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .hero-section h2 {
+        font-size: 2rem;
+    }
+    
+    .hero-section p {
+        font-size: 1rem;
+    }
+}
+
+/* Стили для модальных окон */
+.modal {
+    transition: opacity 0.3s ease;
+}
+
+.modal.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Стили для карточек привычек */
+.habit-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.habit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Стили для статистики */
+.stats-section {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+}
+
+/* Кастомные стили для кнопок */
+.btn-primary {
+    background-color: #10b981;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #059669;
+}
+
+.btn-secondary {
+    background-color: #6b7280;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.btn-secondary:hover {
+    background-color: #4b5563;
+}
+
+/* Стили для формы */
+.form-input {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #10b981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+/* Стили для навигации */
+.nav-link {
+    color: #6b7280;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #10b981;
+}
+
+.nav-link.active {
+    color: #10b981;
+    font-weight: 600;
+}
+
+/* Стили для футера */
+.footer {
+    background-color: #1f2937;
+    color: #f9fafb;
+}
+
+/* Стили для валидации пароля */
+.password-requirements {
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.375rem;
+    padding: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+.requirement {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.25rem;
+    font-size: 0.75rem;
+}
+
+.requirement.met {
+    color: #10b981;
+}
+
+.requirement.unmet {
+    color: #ef4444;
+}
+
+.requirement-indicator {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+}
+
+.requirement.met .requirement-indicator {
+    background-color: #10b981;
+}
+
+.requirement.unmet .requirement-indicator {
+    background-color: #ef4444;
+}
+
+/* Стили для подсказок пароля */
+#passwordHelpContainer {
+    min-height: 90px; /* Резервируем место для подсказок */
+    transition: min-height 0.3s ease;
+}
+
+#passwordHelp {
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.375rem;
+    padding: 0.75rem;
+    margin-top: 0.25rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+#passwordHelp div {
+    transition: color 0.3s ease;
+}
+
+/* Улучшаем отображение подсказок на мобильных устройствах */
+@media (max-width: 640px) {
+    #passwordHelp {
+        font-size: 0.7rem;
+        padding: 0.5rem;
+    }
+    
+    #passwordHelpContainer {
+        min-height: 100px;
+    }
+}
+
+/* Фиксированная высота для модальных окон */
+#registerModal .bg-white {
+    min-height: 500px; /* Фиксированная минимальная высота */
+    max-height: 90vh; /* Максимальная высота 90% экрана */
+    overflow-y: auto; /* Добавляем прокрутку если контент не помещается */
+}
+
+/* Плавная анимация для подсказок пароля */
+#passwordHelp {
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+#passwordHelp.visible {
+    opacity: 1;
+    visibility: visible;
+    max-height: 150px; /* Достаточно для всех подсказок */
+    margin-top: 8px;
+}
+
+/* Убираем стандартный отступ у контейнера подсказок */
+#passwordHelpContainer {
+    min-height: 0;
+    transition: min-height 0.3s ease;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 640px) {
+    #registerModal .bg-white {
+        min-height: 450px;
+        max-height: 85vh;
+        margin: 1rem;
+    }
+}
+
+/* Стили для модального окна регистрации с фиксированной высотой */
+.modal-content-register {
+    min-height: 500px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Плавная анимация для всего модального окна */
+#registerModal {
+    transition: opacity 0.3s ease;
+}
+
+#registerModal.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Анимация для появления модального окна */
+#registerModal:not(.hidden) .modal-content-register {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

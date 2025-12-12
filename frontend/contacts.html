@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - HabitJoy</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="api.js" defer></script>
+    <script src="modals.js" defer></script>
+    <script src="auth.js" defer></script>
+    <script src="script.js" defer></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Шапка с меню -->
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2 cursor-pointer hover:opacity-80 transition-opacity">
+                <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white font-bold">HJ</div>
+                <h1 class="text-xl font-bold text-green-600">HabitJoy</h1>
+            </a>
+            
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="index.html" class="text-gray-600 hover:text-green-600">Главная</a></li>
+                    <li><a href="habit-detail.html" class="text-gray-600 hover:text-green-600">Мои привычки</a></li>
+                    <li><a href="contacts.html" class="text-green-600 font-medium">Контакты</a></li>
+                    <li><button id="loginBtn" class="text-gray-600 hover:text-green-600">Войти</button></li>
+                    <li><button id="registerBtn" class="bg-green-500 text-white px-4 py-1 rounded hover:bg-green-600">Регистрация</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <main class="container mx-auto px-4 py-8">
+        <h2 class="text-3xl font-bold mb-8">Контакты</h2>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Контактная информация -->
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h3 class="text-2xl font-bold mb-6">Свяжитесь с нами</h3>
+                
+                <div class="space-y-4">
+                    <div class="flex items-start">
+                        <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Телефон</h4>
+                            <p class="text-gray-600">+7 (999) 205-42-63</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Email</h4>
+                            <p class="text-gray-600">info@habitjoy.ru</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Адрес</h4>
+                            <p class="text-gray-600">г. Санкт-Петербург</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Время работы</h4>
+                            <p class="text-gray-600">Круглосуточно</p>
+                            <p class="text-gray-600">24/7</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8">
+                    <h4 class="font-semibold mb-2">Наш слоган</h4>
+                    <p class="text-green-600 italic">"Управляй своими привычками. Улучшай свою жизнь."</p>
+                </div>
+            </div>
+            
+            <!-- Форма обратной связи -->
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h3 class="text-2xl font-bold mb-6">Обратная связь</h3>
+                
+                <form id="contactForm">
+                    <div class="mb-4">
+                        <label class="block text-gray-700 mb-2" for="contactName">Ваше имя</label>
+                        <input type="text" id="contactName" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-green-500" required>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="block text-gray-700 mb-2" for="contactEmail">Email</label>
+                        <input type="email" id="contactEmail" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-green-500" required>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="block text-gray-700 mb-2" for="contactSubject">Тема</label>
+                        <input type="text" id="contactSubject" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-green-500" required>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label class="block text-gray-700 mb-2" for="contactMessage">Сообщение</label>
+                        <textarea id="contactMessage" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-green-500" rows="5" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600">Отправить сообщение</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="mt-12 bg-white p-6 rounded-lg shadow">
+            <h3 class="text-2xl font-bold mb-6">О нашем проекте</h3>
+            <div class="prose max-w-none">
+                <p class="text-gray-700 mb-4">
+                    HabitJoy - это проект, созданный в рамках лабораторных работ по предмету "Интернет технологии". 
+                    Наша цель - помочь людям развивать полезные привычки и отслеживать свой прогресс.
+                </p>
+                <p class="text-gray-700">
+                    Мы верим, что маленькие, но регулярные действия могут привести к большим изменениям в жизни. 
+                    Присоединяйтесь к нашему сообществу и начните свой путь к лучшей версии себя!
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Футер -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-sm">HJ</div>
+                        <h2 class="text-lg font-bold">HabitJoy</h2>
+                    </div>
+                    <p class="text-gray-400 mt-2">Управляй своими привычками. Улучшай свою жизнь.</p>
+                </div>
+                
+                <div class="text-center md:text-right">
+                    <p class="text-gray-400">&copy; 2025 HabitJoy. Все права защищены.</p>
+                    <p class="text-gray-400 mt-1">Сайт создан в рамках лабораторных работ по Internet технологиям</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
